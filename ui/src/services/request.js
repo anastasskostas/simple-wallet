@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { displayNotification } from '../utils/CallsInterceptor.jsx';
 
 
 axios.interceptors.response.use(response => {
@@ -34,6 +34,7 @@ export function post(url, data) {
       }
     }).then(response => {
       resolve(response);
+      displayNotification(response, false);
     }).catch(error => {
       catchError(error, reject);
     });
@@ -43,6 +44,7 @@ export function post(url, data) {
 
 function catchError(error, reject) {
   reject(handleError(error));
+  displayNotification(error, true);
 }
 
 function handleError(error) {

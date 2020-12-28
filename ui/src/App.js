@@ -23,6 +23,7 @@ class App extends Component {
             <Route exact path="/wallet" name="Wallet" render={props => <Wallet {...props} />} />
           </Switch>
         </React.Suspense>
+        <div id="toaster-notifications"></div>
       </HashRouter>
     );
   }
