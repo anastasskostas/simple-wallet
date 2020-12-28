@@ -13,12 +13,16 @@ class WalletComponent extends Component {
   componentDidMount() {
   }
 
-
+  logout = () => {
+    sessionStorage.removeItem("token");
+    window.location.replace(window.location.origin + "/#/login");
+  }
 
   render() {
     return (
       <WalletHtml
         data={this.state}
+        logout={this.logout}
       />
     )
   }
