@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="979cb51d-98e3-497a-8381-e270c1187505" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/api.iws" beforeDir="false" afterPath="$PROJECT_DIR$/api.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/TransactionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/TransactionHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
