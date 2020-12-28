@@ -52,4 +52,5 @@ function TransactionsHtml(props) {
     </Card>
   );
 }
+
 export default TransactionsHtml;

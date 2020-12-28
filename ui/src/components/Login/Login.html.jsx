@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function LoginHtml(props) {
 
-
   return (
     <div className="text-center">
       <h3>Login</h3>
@@ -12,4 +11,5 @@ function LoginHtml(props) {
     </div>
   );
 }
+
 export default LoginHtml;

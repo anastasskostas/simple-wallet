@@ -28,4 +28,5 @@ function WalletHtml(props) {
     </>
   );
 }
+
 export default WalletHtml;
