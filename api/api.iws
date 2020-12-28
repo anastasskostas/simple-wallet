@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="979cb51d-98e3-497a-8381-e270c1187505" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wallet/authorization/JwtTokenUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wallet/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wallet/storage/RedisPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/api.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api.iws" beforeDir="false" afterPath="$PROJECT_DIR$/api.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

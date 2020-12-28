@@ -1,10 +1,13 @@
 package com.wallet.handler;
 
+import com.google.gson.Gson;
 import com.wallet.authorization.JwtTokenUtil;
 import com.wallet.model.User;
+import com.wallet.storage.RedisPool;
 import ratpack.handling.Context;
 import ratpack.handling.InjectionHandler;
 import ratpack.http.Response;
+import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,16 +26,24 @@ public class AuthHandler extends InjectionHandler {
                     response.send();
                 })
                 .post(() -> {
-                    String uid = UUID.randomUUID().toString();
-                    User newUser = new User(uid, 100, "GBP");
+                    try (Jedis jedis = RedisPool.getJedis()) {
+                        Gson gson = new Gson();
 
-                    JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-                    String token = jwtTokenUtil.generateToken(newUser);
+                        String uid = UUID.randomUUID().toString();
+                        User newUser = new User(uid, 100, "GBP");
 
-                    Map<String, String> res = new HashMap<>();
-                    res.put("token", token);
+                        String newUserJson = gson.toJson(newUser);
+                        RedisPool.set("user#" + uid, newUserJson);
 
-                    ctx.render(json(res));
+                        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+                        String token = jwtTokenUtil.generateToken(newUser);
+
+                        Map<String, String> res = new HashMap<>();
+                        res.put("token", token);
+
+                        ctx.render(json(res));
+                    }
+
                 })
         );
     }
