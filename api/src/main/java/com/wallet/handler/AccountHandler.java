@@ -2,6 +2,7 @@ package com.wallet.handler;
 
 import com.google.gson.Gson;
 import com.wallet.authorization.JwtTokenUtil;
+import com.wallet.model.Transaction;
 import com.wallet.model.User;
 import com.wallet.storage.RedisPool;
 import ratpack.handling.Context;
@@ -37,7 +38,32 @@ public class AccountHandler extends InjectionHandler {
                     }
                 })
                 .post(() -> {
-                    ctx.render("Spend");
+                    request.getBody().then(data -> {
+                        try (Jedis jedis = RedisPool.getJedis()) {
+
+                            String text = data.getText();
+
+                            String token = request.getHeaders().get("Authorization");
+                            JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+                            String uid = jwtTokenUtil.getUidFromToken(token);
+
+                            String userJson = jedis.get("user#" + uid);
+                            User user = gson.fromJson(userJson, User.class);
+                            Transaction newTransaction = gson.fromJson(text, Transaction.class);
+
+                            if (user.getBalance() < newTransaction.getAmount()) {
+                                return;
+                            }
+
+                            user.setBalance(user.getBalance() - newTransaction.getAmount());
+                            userJson = gson.toJson(user);
+                            RedisPool.set("user#" + uid, userJson);
+                            jedis.sadd("transactions#" + uid, text);
+
+                            ctx.render(json("Success"));
+                        }
+
+                    });
                 })
         );
     }
