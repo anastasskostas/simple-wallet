@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="979cb51d-98e3-497a-8381-e270c1187505" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/CORSHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api.iws" beforeDir="false" afterPath="$PROJECT_DIR$/api.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/App.java" afterDir="false" />
     </list>
@@ -49,6 +50,13 @@
     </breakpoint_any>
     <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
