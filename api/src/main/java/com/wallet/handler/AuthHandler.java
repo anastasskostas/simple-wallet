@@ -1,8 +1,16 @@
 package com.wallet.handler;
 
+import com.wallet.authorization.JwtTokenUtil;
+import com.wallet.model.User;
 import ratpack.handling.Context;
 import ratpack.handling.InjectionHandler;
 import ratpack.http.Response;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import static ratpack.jackson.Jackson.json;
 
 public class AuthHandler extends InjectionHandler {
 
@@ -15,7 +23,16 @@ public class AuthHandler extends InjectionHandler {
                     response.send();
                 })
                 .post(() -> {
-                    ctx.render("Login");
+                    String uid = UUID.randomUUID().toString();
+                    User newUser = new User(uid, 100, "GBP");
+
+                    JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+                    String token = jwtTokenUtil.generateToken(newUser);
+
+                    Map<String, String> res = new HashMap<>();
+                    res.put("token", token);
+
+                    ctx.render(json(res));
                 })
         );
     }
