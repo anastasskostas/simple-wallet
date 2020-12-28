@@ -27,7 +27,8 @@ public class AccountHandler extends InjectionHandler {
                 })
                 .get(() -> {
                     try (Jedis jedis = RedisPool.getJedis()) {
-                        String token = request.getHeaders().get("Authorization");
+                        String bearerToken = request.getHeaders().get("Authorization");
+                        String token = bearerToken.replace("Bearer ","");
                         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
                         String uid = jwtTokenUtil.getUidFromToken(token);
 
@@ -43,7 +44,8 @@ public class AccountHandler extends InjectionHandler {
 
                             String text = data.getText();
 
-                            String token = request.getHeaders().get("Authorization");
+                            String bearerToken = request.getHeaders().get("Authorization");
+                            String token = bearerToken.replace("Bearer ","");
                             JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
                             String uid = jwtTokenUtil.getUidFromToken(token);
 

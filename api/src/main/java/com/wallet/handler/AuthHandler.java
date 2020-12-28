@@ -39,7 +39,7 @@ public class AuthHandler extends InjectionHandler {
                         String token = jwtTokenUtil.generateToken(newUser);
 
                         Map<String, String> res = new HashMap<>();
-                        res.put("token", token);
+                        res.put("token", "Bearer " + token);
 
                         ctx.render(json(res));
                     }
