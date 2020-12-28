@@ -1,0 +1,11 @@
+
+plugins {
+  id 'io.ratpack.ratpack-java' version '1.8.0'
+  id 'idea'
+}
+
+repositories {
+  jcenter()
+}
+
+
