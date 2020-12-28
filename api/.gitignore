@@ -1,6 +1,9 @@
 .gradle
 .idea
 
+### Java ###
+*.class
+
 **/build/
 !src/**/build/
 

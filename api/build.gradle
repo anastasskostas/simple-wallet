@@ -4,6 +4,8 @@ plugins {
   id 'idea'
 }
 
+mainClassName = 'com.wallet.App'
+
 repositories {
   jcenter()
 }
