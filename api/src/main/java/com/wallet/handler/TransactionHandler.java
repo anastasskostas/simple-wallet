@@ -8,7 +8,6 @@ import ratpack.handling.Context;
 import ratpack.handling.InjectionHandler;
 import ratpack.http.Request;
 import ratpack.http.Response;
-import redis.clients.jedis.Jedis;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,23 +29,20 @@ public class TransactionHandler extends InjectionHandler {
                     response.send();
                 })
                 .get(() -> {
-                    try (Jedis jedis = RedisPool.getJedis()) {
+                    String bearerToken = request.getHeaders().get("Authorization");
+                    String token = bearerToken.replace("Bearer ","");
+                    JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+                    String uid = jwtTokenUtil.getUidFromToken(token);
 
-                        String bearerToken = request.getHeaders().get("Authorization");
-                        String token = bearerToken.replace("Bearer ","");
-                        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-                        String uid = jwtTokenUtil.getUidFromToken(token);
+                    Set<String> transactionsSet = RedisPool.smembers("transactions#" + uid);
 
-                        Set<String> transactionsSet = jedis.smembers("transactions#" + uid);
-
-                        List<Transaction> transactionsList = new ArrayList<>();
-                        for (String transactionStr : transactionsSet) {
-                            Transaction transaction = gson.fromJson(transactionStr, Transaction.class);
-                            transactionsList.add(transaction);
-                        }
-
-                        ctx.render(json(transactionsList));
+                    List<Transaction> transactionsList = new ArrayList<>();
+                    for (String transactionStr : transactionsSet) {
+                        Transaction transaction = gson.fromJson(transactionStr, Transaction.class);
+                        transactionsList.add(transaction);
                     }
+
+                    ctx.render(json(transactionsList));
                 })
         );
     }

@@ -6,6 +6,8 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import java.util.Set;
+
 public class RedisPool {
 
     private static final Logger logger = LoggerFactory
@@ -36,15 +38,37 @@ public class RedisPool {
 
     public static void set(String key, String value) {
         try {
-            Jedis jedis = getJedis();
-            jedis.set(key, value);
+            getJedis().set(key, value);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
     }
 
-    public static Object get(String key) {
-        Jedis jedis = getJedis();
+    public static String get(String key) {
+        try {
+            return getJedis().get(key);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
         return null;
     }
+
+
+    public static void sadd(String key, String value) {
+        try {
+            getJedis().sadd(key, value);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+    }
+
+    public static Set<String> smembers(String key) {
+        try {
+            return getJedis().smembers(key);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
 }

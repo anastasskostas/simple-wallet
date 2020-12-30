@@ -6,7 +6,7 @@ class ToasterComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: props.content,
+      content: props.content ? props.content : '',
       isError: props.isError,
       showToast: true
     }
