@@ -31,8 +31,8 @@ public class TransactionHandler extends InjectionHandler {
                 .get(() -> {
                     String bearerToken = request.getHeaders().get("Authorization");
                     String token = bearerToken.replace("Bearer ","");
-                    JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-                    String uid = jwtTokenUtil.getUidFromToken(token);
+
+                    String uid = JwtTokenUtil.getUidFromToken(token);
 
                     Set<String> transactionsSet = RedisPool.smembers("transactions#" + uid);
 

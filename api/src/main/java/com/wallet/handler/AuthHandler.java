@@ -33,8 +33,7 @@ public class AuthHandler extends InjectionHandler {
                     String newUserJson = gson.toJson(newUser);
                     RedisPool.set("user#" + uid, newUserJson);
 
-                    JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-                    String token = jwtTokenUtil.generateToken(newUser);
+                    String token = JwtTokenUtil.generateToken(newUser);
 
                     Map<String, String> res = new HashMap<>();
                     res.put("token", "Bearer " + token);

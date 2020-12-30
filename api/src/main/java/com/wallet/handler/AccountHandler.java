@@ -26,9 +26,9 @@ public class AccountHandler extends InjectionHandler {
                 })
                 .get(() -> {
                     String bearerToken = request.getHeaders().get("Authorization");
-                    String token = bearerToken.replace("Bearer ","");
-                    JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-                    String uid = jwtTokenUtil.getUidFromToken(token);
+                    String token = bearerToken.replace("Bearer ", "");
+
+                    String uid = JwtTokenUtil.getUidFromToken(token);
 
                     String userJson = RedisPool.get("user#" + uid);
                     User user = gson.fromJson(userJson, User.class);
@@ -40,9 +40,9 @@ public class AccountHandler extends InjectionHandler {
                         String text = data.getText();
 
                         String bearerToken = request.getHeaders().get("Authorization");
-                        String token = bearerToken.replace("Bearer ","");
-                        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-                        String uid = jwtTokenUtil.getUidFromToken(token);
+                        String token = bearerToken.replace("Bearer ", "");
+
+                        String uid = JwtTokenUtil.getUidFromToken(token);
 
                         String userJson = RedisPool.get("user#" + uid);
                         User user = gson.fromJson(userJson, User.class);
