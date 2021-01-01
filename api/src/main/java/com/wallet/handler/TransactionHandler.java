@@ -9,9 +9,7 @@ import ratpack.handling.InjectionHandler;
 import ratpack.http.Request;
 import ratpack.http.Response;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static ratpack.jackson.Jackson.json;
 
@@ -29,15 +27,20 @@ public class TransactionHandler extends InjectionHandler {
                     response.send();
                 })
                 .get(() -> {
-                    String bearerToken = request.getHeaders().get("Authorization");
+                    final String bearerToken = request.getHeaders().get("Authorization");
+                    if (Objects.isNull(bearerToken) && bearerToken.isEmpty() && !bearerToken.startsWith("Bearer ")) {
+                        return;
+                    }
                     final String token = bearerToken.replace("Bearer ", "");
 
-                    Set<String> transactionsSet = RedisPool.smembers("transactions#" + JwtTokenUtil.getUidFromToken(token));
-                    List<Transaction> transactionsList = new ArrayList<>();
+                    final Set<String> transactionsSet = RedisPool.smembers("transactions#" + JwtTokenUtil.getUidFromToken(token));
+                    final List<Transaction> transactionsList = new ArrayList<>();
                     for (String transactionStr : transactionsSet) {
-                        Transaction transaction = gson.fromJson(transactionStr, Transaction.class);
-                        transactionsList.add(transaction);
+                        transactionsList.add(gson.fromJson(transactionStr, Transaction.class));
                     }
+
+                    Collections.sort(transactionsList,
+                            Comparator.comparing(Transaction::getDate, Comparator.reverseOrder()));
 
                     ctx.render(json(transactionsList));
                 })

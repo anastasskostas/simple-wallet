@@ -31,9 +31,9 @@ public class AuthHandler extends InjectionHandler {
                     final User newUser = new User(uid, new BigDecimal(100), "GBP");
 
                     RedisPool.set("user#" + uid, gson.toJson(newUser));
-                    String token = JwtTokenUtil.generateToken(newUser);
+                    final String token = JwtTokenUtil.generateToken(newUser);
 
-                    Map<String, String> res = new HashMap<>();
+                    final Map<String, String> res = new HashMap<>();
                     res.put("token", "Bearer " + token);
                     ctx.render(json(res));
                 })

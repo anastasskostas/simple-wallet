@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AccountHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/TransactionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/TransactionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/model/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/model/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

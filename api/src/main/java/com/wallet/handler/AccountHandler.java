@@ -10,6 +10,8 @@ import ratpack.handling.InjectionHandler;
 import ratpack.http.Request;
 import ratpack.http.Response;
 
+import java.util.Objects;
+
 import static ratpack.jackson.Jackson.json;
 
 public class AccountHandler extends InjectionHandler {
@@ -25,7 +27,10 @@ public class AccountHandler extends InjectionHandler {
                     response.send();
                 })
                 .get(() -> {
-                    String bearerToken = request.getHeaders().get("Authorization");
+                    final String bearerToken = request.getHeaders().get("Authorization");
+                    if (Objects.isNull(bearerToken) && bearerToken.isEmpty() && !bearerToken.startsWith("Bearer ")) {
+                        return;
+                    }
                     final String token = bearerToken.replace("Bearer ", "");
 
                     final User user = gson.fromJson(RedisPool.get("user#" + JwtTokenUtil.getUidFromToken(token)), User.class);
@@ -35,12 +40,15 @@ public class AccountHandler extends InjectionHandler {
                     request.getBody().then(data -> {
                         final String transaction = data.getText();
 
-                        String bearerToken = request.getHeaders().get("Authorization");
+                        final String bearerToken = request.getHeaders().get("Authorization");
+                        if (Objects.isNull(bearerToken) && bearerToken.isEmpty() && !bearerToken.startsWith("Bearer ")) {
+                            return;
+                        }
                         final String token = bearerToken.replace("Bearer ", "");
 
                         final String uid = JwtTokenUtil.getUidFromToken(token);
 
-                        User user = gson.fromJson(RedisPool.get("user#" + uid), User.class);
+                        final User user = gson.fromJson(RedisPool.get("user#" + uid), User.class);
                         final Transaction newTransaction = gson.fromJson(transaction, Transaction.class);
 
                         if (user.getBalance().compareTo(newTransaction.getAmount()) == -1) {
