@@ -1,16 +1,17 @@
 package com.wallet.model;
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Transaction {
 
     private final Date date;
     private final String description;
-    private final Integer amount;
+    private final BigDecimal amount;
     private final String currency;
 
-    public Transaction(Date date, String description, Integer amount, String currency) {
+    public Transaction(Date date, String description, BigDecimal amount, String currency) {
         this.date = date;
         this.description = description;
         this.amount = amount;
@@ -29,7 +30,7 @@ public class Transaction {
         return currency;
     }
 
-    public Integer getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 }

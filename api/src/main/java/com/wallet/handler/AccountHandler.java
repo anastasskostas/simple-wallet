@@ -13,9 +13,9 @@ import ratpack.http.Response;
 import static ratpack.jackson.Jackson.json;
 
 public class AccountHandler extends InjectionHandler {
+    private final Gson gson = new Gson();
 
     public void handle(Context ctx, String base) throws Exception {
-        Gson gson = new Gson();
         Response response = ctx.getResponse();
         Request request = ctx.getRequest();
 
@@ -26,39 +26,33 @@ public class AccountHandler extends InjectionHandler {
                 })
                 .get(() -> {
                     String bearerToken = request.getHeaders().get("Authorization");
-                    String token = bearerToken.replace("Bearer ", "");
+                    final String token = bearerToken.replace("Bearer ", "");
 
-                    String uid = JwtTokenUtil.getUidFromToken(token);
-
-                    String userJson = RedisPool.get("user#" + uid);
-                    User user = gson.fromJson(userJson, User.class);
-
+                    final User user = gson.fromJson(RedisPool.get("user#" + JwtTokenUtil.getUidFromToken(token)), User.class);
                     ctx.render(json(user));
                 })
                 .post(() -> {
                     request.getBody().then(data -> {
-                        String text = data.getText();
+                        final String transaction = data.getText();
 
                         String bearerToken = request.getHeaders().get("Authorization");
-                        String token = bearerToken.replace("Bearer ", "");
+                        final String token = bearerToken.replace("Bearer ", "");
 
-                        String uid = JwtTokenUtil.getUidFromToken(token);
+                        final String uid = JwtTokenUtil.getUidFromToken(token);
 
-                        String userJson = RedisPool.get("user#" + uid);
-                        User user = gson.fromJson(userJson, User.class);
-                        Transaction newTransaction = gson.fromJson(text, Transaction.class);
+                        User user = gson.fromJson(RedisPool.get("user#" + uid), User.class);
+                        final Transaction newTransaction = gson.fromJson(transaction, Transaction.class);
 
-                        if (user.getBalance() < newTransaction.getAmount()) {
+                        if (user.getBalance().compareTo(newTransaction.getAmount()) == -1) {
                             return;
                         }
 
-                        user.setBalance(user.getBalance() - newTransaction.getAmount());
-                        userJson = gson.toJson(user);
-                        RedisPool.set("user#" + uid, userJson);
-                        RedisPool.sadd("transactions#" + uid, text);
+                        user.setBalance(user.getBalance().subtract(newTransaction.getAmount()));
+
+                        RedisPool.set("user#" + uid, gson.toJson(user));
+                        RedisPool.sadd("transactions#" + uid, transaction);
 
                         ctx.render(json("Success"));
-
                     });
                 })
         );

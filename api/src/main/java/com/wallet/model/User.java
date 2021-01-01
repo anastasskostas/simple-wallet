@@ -1,13 +1,15 @@
 package com.wallet.model;
 
+import java.math.BigDecimal;
+
 public class User {
 
     private final String uid;
-    private Integer balance;
+    private BigDecimal balance;
     private final String currency;
 
     //User class constructor
-    public User(String uid, Integer balance, String currency) {
+    public User(String uid, BigDecimal balance, String currency) {
         this.uid = uid;
         this.balance = balance;
         this.currency = currency;
@@ -17,11 +19,11 @@ public class User {
         return uid;
     }
 
-    public Integer getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

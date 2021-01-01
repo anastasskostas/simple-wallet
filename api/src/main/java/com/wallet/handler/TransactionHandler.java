@@ -16,9 +16,9 @@ import java.util.Set;
 import static ratpack.jackson.Jackson.json;
 
 public class TransactionHandler extends InjectionHandler {
+    private final Gson gson = new Gson();
 
     public void handle(Context ctx, String base) throws Exception {
-        Gson gson = new Gson();
 
         Response response = ctx.getResponse();
         Request request = ctx.getRequest();
@@ -30,12 +30,9 @@ public class TransactionHandler extends InjectionHandler {
                 })
                 .get(() -> {
                     String bearerToken = request.getHeaders().get("Authorization");
-                    String token = bearerToken.replace("Bearer ","");
+                    final String token = bearerToken.replace("Bearer ", "");
 
-                    String uid = JwtTokenUtil.getUidFromToken(token);
-
-                    Set<String> transactionsSet = RedisPool.smembers("transactions#" + uid);
-
+                    Set<String> transactionsSet = RedisPool.smembers("transactions#" + JwtTokenUtil.getUidFromToken(token));
                     List<Transaction> transactionsList = new ArrayList<>();
                     for (String transactionStr : transactionsSet) {
                         Transaction transaction = gson.fromJson(transactionStr, Transaction.class);

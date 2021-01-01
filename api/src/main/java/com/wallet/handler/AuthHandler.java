@@ -8,6 +8,7 @@ import ratpack.handling.Context;
 import ratpack.handling.InjectionHandler;
 import ratpack.http.Response;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -15,6 +16,7 @@ import java.util.UUID;
 import static ratpack.jackson.Jackson.json;
 
 public class AuthHandler extends InjectionHandler {
+    private final Gson gson = new Gson();
 
     public void handle(Context ctx, String base) throws Exception {
         Response response = ctx.getResponse();
@@ -25,21 +27,15 @@ public class AuthHandler extends InjectionHandler {
                     response.send();
                 })
                 .post(() -> {
-                    Gson gson = new Gson();
+                    final String uid = UUID.randomUUID().toString();
+                    final User newUser = new User(uid, new BigDecimal(100), "GBP");
 
-                    String uid = UUID.randomUUID().toString();
-                    User newUser = new User(uid, 100, "GBP");
-
-                    String newUserJson = gson.toJson(newUser);
-                    RedisPool.set("user#" + uid, newUserJson);
-
+                    RedisPool.set("user#" + uid, gson.toJson(newUser));
                     String token = JwtTokenUtil.generateToken(newUser);
 
                     Map<String, String> res = new HashMap<>();
                     res.put("token", "Bearer " + token);
-
                     ctx.render(json(res));
-
                 })
         );
     }
