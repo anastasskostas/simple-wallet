@@ -20,7 +20,7 @@ public class RedisPool {
     private static Integer maxActive = 1000;
     private static Integer maxIdle = 20;
     private static Integer maxWait = 3000;
-    private static String hostIp = "localhost";
+    private static String hostIp = "10.154.0.4";
     private static Integer port = 6379;
 
 

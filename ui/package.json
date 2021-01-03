@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.3",
+    "cross-env": "^7.0.3",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.0.1",
@@ -21,6 +22,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "start-dev": "cross-env REACT_APP_ENVIRONMENT=dev react-scripts start",
+    "start-prod": "cross-env REACT_APP_ENVIRONMENT=prod react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

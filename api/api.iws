@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0f24354-d661-40b9-87ac-714b6beb9fbf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/api.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api.iws" beforeDir="false" afterPath="$PROJECT_DIR$/api.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ui/src/config/config.dev.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ui/src/config/config.prod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/storage/RedisPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/storage/RedisPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ui/src/components/Balance/Balance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/components/Balance/Balance.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ui/src/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/config/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
