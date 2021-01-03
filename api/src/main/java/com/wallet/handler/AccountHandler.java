@@ -30,12 +30,14 @@ public class AccountHandler extends InjectionHandler {
                 })
                 .get(() -> {
                     try {
+                        //Get token from headers and check if it is in valid format
                         final String bearerToken = request.getHeaders().get("Authorization");
                         if (Objects.isNull(bearerToken) || bearerToken.isEmpty() || !bearerToken.startsWith("Bearer ")) {
                             throw new WalletException(Status.UNAUTHORIZED, "Invalid token. Please login again.");
                         }
                         final String token = bearerToken.replace("Bearer ", "");
 
+                        //Validate token and get uid - return user data
                         String uid = JwtTokenUtil.getUidFromToken(token);
                         final User user = gson.fromJson(RedisPool.get("user#" + uid), User.class);
                         ctx.render(json(user));
@@ -47,25 +49,30 @@ public class AccountHandler extends InjectionHandler {
                 .post(() -> {
                     request.getBody().then(data -> {
                         try {
+                            //Get new transaction
                             final String transaction = data.getText();
 
+                            //Get token from headers and check if it is in valid format
                             final String bearerToken = request.getHeaders().get("Authorization");
                             if (Objects.isNull(bearerToken) || bearerToken.isEmpty() || !bearerToken.startsWith("Bearer ")) {
                                 throw new WalletException(Status.UNAUTHORIZED, "Invalid token. Please login again.");
                             }
                             final String token = bearerToken.replace("Bearer ", "");
 
+                            //Validate token and get uid - return user data
                             final String uid = JwtTokenUtil.getUidFromToken(token);
 
+                            //Get user from redis and convert to object
                             final User user = gson.fromJson(RedisPool.get("user#" + uid), User.class);
                             final Transaction newTransaction = gson.fromJson(transaction, Transaction.class);
 
+                            //Throw error if new transaction is higher than current balance, else update user balance
                             if (user.getBalance().compareTo(newTransaction.getAmount()) == -1) {
                                 throw new WalletException(Status.BAD_REQUEST, "Insufficient Balance");
                             }
-
                             user.setBalance(user.getBalance().subtract(newTransaction.getAmount()));
 
+                            //Save user with updated balance and add transaction to the list
                             RedisPool.set("user#" + uid, gson.toJson(user));
                             RedisPool.sadd("transactions#" + uid, transaction);
 

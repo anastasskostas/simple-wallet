@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="979cb51d-98e3-497a-8381-e270c1187505" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wallet/exception/WalletException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/api.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api.iws" beforeDir="false" afterPath="$PROJECT_DIR$/api.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/authorization/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/authorization/JwtTokenUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AccountHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/CORSHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/CORSHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/TransactionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/TransactionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/storage/RedisPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/storage/RedisPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ui/src/components/Shared/Toaster/Toaster.html.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/components/Shared/Toaster/Toaster.html.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ui/src/components/Shared/Toaster/Toaster.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/components/Shared/Toaster/Toaster.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ui/src/services/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/services/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ui/src/utils/CallsInterceptor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/utils/CallsInterceptor.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/config/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +280,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wallet/handler/TransactionHandler.java</url>
-          <line>33</line>
+          <line>34</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>

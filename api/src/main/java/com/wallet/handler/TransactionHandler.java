@@ -30,18 +30,21 @@ public class TransactionHandler extends InjectionHandler {
                 })
                 .get(() -> {
                     try {
+                        //Get token from headers and check if it is in valid format
                         final String bearerToken = request.getHeaders().get("Authorization");
                         if (Objects.isNull(bearerToken) || bearerToken.isEmpty() || !bearerToken.startsWith("Bearer ")) {
                             throw new WalletException(Status.UNAUTHORIZED, "Invalid token. Please login again.");
                         }
                         final String token = bearerToken.replace("Bearer ", "");
 
+                        //Get transactions from redis only if token is valid, otherwise throw 401 exception
                         final Set<String> transactionsSet = RedisPool.smembers("transactions#" + JwtTokenUtil.getUidFromToken(token));
                         final List<Transaction> transactionsList = new ArrayList<>();
                         for (String transactionStr : transactionsSet) {
                             transactionsList.add(gson.fromJson(transactionStr, Transaction.class));
                         }
 
+                        //Sort transactions by date
                         Collections.sort(transactionsList,
                                 Comparator.comparing(Transaction::getDate, Comparator.reverseOrder()));
 
