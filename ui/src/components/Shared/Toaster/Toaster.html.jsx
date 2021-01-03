@@ -34,7 +34,7 @@ function ToasterHtml(props) {
             <strong className="mr-auto">{props.data.isError ? 'Error' : 'Success'}</strong>
           </Toast.Header>
           <Toast.Body className={props.data.isError ? 'text-danger' : 'text-success'}>
-            {props.data.content.text}
+            {props.data.content.statusText}
           </Toast.Body>
         </Toast>
 

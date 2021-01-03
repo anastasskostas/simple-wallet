@@ -2,6 +2,7 @@ package com.wallet.handler;
 
 import com.google.gson.Gson;
 import com.wallet.authorization.JwtTokenUtil;
+import com.wallet.exception.WalletException;
 import com.wallet.model.Transaction;
 import com.wallet.model.User;
 import com.wallet.storage.RedisPool;
@@ -9,6 +10,7 @@ import ratpack.handling.Context;
 import ratpack.handling.InjectionHandler;
 import ratpack.http.Request;
 import ratpack.http.Response;
+import ratpack.http.Status;
 
 import java.util.Objects;
 
@@ -27,40 +29,51 @@ public class AccountHandler extends InjectionHandler {
                     response.send();
                 })
                 .get(() -> {
-                    final String bearerToken = request.getHeaders().get("Authorization");
-                    if (Objects.isNull(bearerToken) && bearerToken.isEmpty() && !bearerToken.startsWith("Bearer ")) {
-                        return;
-                    }
-                    final String token = bearerToken.replace("Bearer ", "");
-
-                    final User user = gson.fromJson(RedisPool.get("user#" + JwtTokenUtil.getUidFromToken(token)), User.class);
-                    ctx.render(json(user));
-                })
-                .post(() -> {
-                    request.getBody().then(data -> {
-                        final String transaction = data.getText();
-
+                    try {
                         final String bearerToken = request.getHeaders().get("Authorization");
-                        if (Objects.isNull(bearerToken) && bearerToken.isEmpty() && !bearerToken.startsWith("Bearer ")) {
-                            return;
+                        if (Objects.isNull(bearerToken) || bearerToken.isEmpty() || !bearerToken.startsWith("Bearer ")) {
+                            throw new WalletException(Status.UNAUTHORIZED, "Invalid token. Please login again.");
                         }
                         final String token = bearerToken.replace("Bearer ", "");
 
-                        final String uid = JwtTokenUtil.getUidFromToken(token);
-
+                        String uid = JwtTokenUtil.getUidFromToken(token);
                         final User user = gson.fromJson(RedisPool.get("user#" + uid), User.class);
-                        final Transaction newTransaction = gson.fromJson(transaction, Transaction.class);
+                        ctx.render(json(user));
+                    } catch (WalletException e) {
+                        response.status(e.getCode());
+                        ctx.render(e.getMessage());
+                    }
+                })
+                .post(() -> {
+                    request.getBody().then(data -> {
+                        try {
+                            final String transaction = data.getText();
 
-                        if (user.getBalance().compareTo(newTransaction.getAmount()) == -1) {
-                            return;
+                            final String bearerToken = request.getHeaders().get("Authorization");
+                            if (Objects.isNull(bearerToken) || bearerToken.isEmpty() || !bearerToken.startsWith("Bearer ")) {
+                                throw new WalletException(Status.UNAUTHORIZED, "Invalid token. Please login again.");
+                            }
+                            final String token = bearerToken.replace("Bearer ", "");
+
+                            final String uid = JwtTokenUtil.getUidFromToken(token);
+
+                            final User user = gson.fromJson(RedisPool.get("user#" + uid), User.class);
+                            final Transaction newTransaction = gson.fromJson(transaction, Transaction.class);
+
+                            if (user.getBalance().compareTo(newTransaction.getAmount()) == -1) {
+                                throw new WalletException(Status.BAD_REQUEST, "Insufficient Balance");
+                            }
+
+                            user.setBalance(user.getBalance().subtract(newTransaction.getAmount()));
+
+                            RedisPool.set("user#" + uid, gson.toJson(user));
+                            RedisPool.sadd("transactions#" + uid, transaction);
+
+                            ctx.render(json("Transaction is completed successfully"));
+                        } catch (WalletException e) {
+                            response.status(e.getCode());
+                            ctx.render(e.getMessage());
                         }
-
-                        user.setBalance(user.getBalance().subtract(newTransaction.getAmount()));
-
-                        RedisPool.set("user#" + uid, gson.toJson(user));
-                        RedisPool.sadd("transactions#" + uid, transaction);
-
-                        ctx.render(json("Success"));
                     });
                 })
         );

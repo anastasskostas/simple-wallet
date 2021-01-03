@@ -8,24 +8,17 @@ class ToasterComponent extends Component {
     this.state = {
       content: props.content ? props.content : '',
       isError: props.isError,
-      showToast: true
+      showToast: true,
     }
   }
 
-  componentDidMount() {
-    if (this.state.content) {
-
-    }
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.content.text) {
+  componentDidUpdate(prevProps) {
+    if (this.props.newNotification !== prevProps.newNotification) {
       this.setState({
-        content: nextProps.content,
-        isError: nextProps.isError,
+        content: this.props.content,
+        isError: this.props.isError,
         showToast: true
       })
-
     }
   }
 

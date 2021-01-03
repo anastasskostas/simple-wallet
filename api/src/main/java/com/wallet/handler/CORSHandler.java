@@ -7,7 +7,7 @@ import ratpack.registry.Registry;
 
 public class CORSHandler implements Handler {
     @Override
-    public void handle(Context ctx) throws Exception {
+    public void handle(Context ctx) {
         MutableHeaders headers = ctx.getResponse().getHeaders();
         headers.set("Access-Control-Allow-Origin", "*");
         headers.set("Access-Control-Allow-Headers", "x-requested-with, origin, content-type, content-length, authorization, accept, response-type");

@@ -17,6 +17,22 @@
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false"/>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true"/>
+  <component name="GradleMigrationSettings" migrationVersion="1"/>
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED"/>
+        <option name="externalProjectPath" value="$PROJECT_DIR$"/>
+        <option name="gradleHome" value="C:/Tools/gradle-6.7.1"/>
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$"/>
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
   <component name="GradleUISettings">
     <setting name="root"/>
   </component>
@@ -39,10 +55,29 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/api.iml" filepath="$PROJECT_DIR$/api.iml"/>
+      <module fileurl="file://$PROJECT_DIR$/api.main.iml" filepath="$PROJECT_DIR$/api.main.iml"/>
+      <module fileurl="file://$PROJECT_DIR$/api.test.iml" filepath="$PROJECT_DIR$/api.test.iml"/>
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" assert-keyword="true" assert-jdk-15="true">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" assert-keyword="true" assert-jdk-15="true">
     <output url="file://$PROJECT_DIR$/out"/>
+  </component>
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="central"/>
+      <option name="name" value="Maven Central repository"/>
+      <option name="url" value="https://repo1.maven.org/maven2"/>
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community"/>
+      <option name="name" value="JBoss Community repository"/>
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/"/>
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="BintrayJCenter"/>
+      <option name="name" value="BintrayJCenter"/>
+      <option name="url" value="https://jcenter.bintray.com/"/>
+    </remote-repository>
   </component>
   <component name="SvnBranchConfigurationManager">
     <option name="mySupportsUserInfoFilter" value="true"/>

@@ -19,7 +19,7 @@ export function get(url) {
     }).then(response => {
       resolve(response);
     }).catch(error => {
-      catchError(error, reject);
+      catchError(handleResponse(error), reject);
     });
   })
 }
@@ -34,30 +34,28 @@ export function post(url, data) {
       }
     }).then(response => {
       resolve(response);
-      displayNotification(response, false);
+      displayNotification(handleResponse(response), false);
     }).catch(error => {
-      catchError(error, reject);
+      catchError(handleResponse(error), reject);
     });
   });
 }
 
-
-function catchError(error, reject) {
-  reject(handleError(error));
-  displayNotification(error, true);
+function handleResponse(response) {
+  if (!response) return;
+  return {
+    status: response.status,
+    statusText: (response.data && typeof response.data ==="string" && response.data.length <= 100) ? response.data : response.statusText
+  }
 }
 
-function handleError(error) {
-  if (!error) return;
-  let e = {
-    status: error.status,
-    text: error.statusText
-  }
-  if (e.status === 401) {
+function catchError(error, reject) {
+  if (error && error.status === 401) {
     sessionStorage.removeItem("token");
     window.location.replace(window.location.origin + "/#/login");
   }
-  return e
+  reject(error);
+  displayNotification(error, true);
 }
 
 function getAuthorizationHeader() {
