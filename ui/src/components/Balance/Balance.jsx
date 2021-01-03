@@ -33,7 +33,7 @@ class BalanceComponent extends Component {
   }
 
   decreaseBalance = () => {
-    const { amount, currentBalance, description } = this.state;
+    const { amount, currentBalance, description, currency } = this.state;
     if (amount > currentBalance) {
       this.setState({ insufficientBalance: true })
       return;
@@ -44,7 +44,7 @@ class BalanceComponent extends Component {
       date: new Date(),
       description: description,
       amount: amount,
-      currency: 'GBP'
+      currency: currency
     }
     updateBalance(data).then(() => {
       this.setState({

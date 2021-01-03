@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="979cb51d-98e3-497a-8381-e270c1187505" name="Default Changelist" comment="">
+    <list default="true" id="b0f24354-d661-40b9-87ac-714b6beb9fbf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/api.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/api.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api.iws" beforeDir="false" afterPath="$PROJECT_DIR$/api.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/authorization/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/authorization/JwtTokenUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AccountHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/TransactionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/TransactionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/Balance/Balance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/components/Balance/Balance.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ui/src/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/config/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,43 +55,6 @@
     <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
   </component>
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
-  </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="api" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="api" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -103,7 +62,7 @@
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
-  <component name="ProjectId" id="1mHwUoSWVTtTYY1BfGCUx9o0p59" />
+  <component name="ProjectId" id="1mZhxdCpOaRcMMJE3jfzcUzmKLX" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state />
@@ -126,15 +85,6 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Anastasios\Desktop\temp2\MuchBetter\api\src\main\java\com\wallet" />
-    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -157,34 +107,10 @@
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
-    <configuration name="App" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.wallet.App" />
-      <module name="api" />
-      <method v="2">
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="App" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.wallet.App" />
-      <module name="api" />
-      <method v="2">
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.wallet.App" />
       <module name="api" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="App" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.wallet.App" />
-      <module name="api.main" />
       <method v="2">
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
@@ -223,9 +149,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
-        <item itemvalue="Application.App" />
-        <item itemvalue="Application.App" />
-        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -246,11 +169,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="979cb51d-98e3-497a-8381-e270c1187505" name="Default Changelist" comment="" />
-      <created>1609163843240</created>
+      <changelist id="b0f24354-d661-40b9-87ac-714b6beb9fbf" name="Default Changelist" comment="" />
+      <created>1609707269605</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1609163843240</updated>
+      <updated>1609707269605</updated>
     </task>
     <servers />
   </component>
@@ -269,21 +192,5 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wallet/storage/RedisPool.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wallet/handler/TransactionHandler.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
