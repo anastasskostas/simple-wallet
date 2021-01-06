@@ -30,7 +30,7 @@ public class AccountHandlerTest {
     @BeforeEach
     public void initData() throws WalletException {
         uid = UUID.randomUUID().toString();
-        user = new User(uid, new BigDecimal(100), "GBP");
+        user = new User(uid, "GBP");
         RedisPool.set("user#" + uid, gson.toJson(user));
         token = JwtTokenUtil.generateToken(user);
     }
@@ -55,7 +55,6 @@ public class AccountHandlerTest {
 
         assertEquals(gson.toJson(user.getUid()), result);
         assertEquals(user.getUid(), localUser.getUid());
-        assertEquals(user.getBalance(), localUser.getBalance());
         assertEquals(user.getCurrency(), localUser.getCurrency());
 
     }

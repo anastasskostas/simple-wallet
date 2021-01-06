@@ -10,12 +10,14 @@ public class Transaction {
     private final String description;
     private final BigDecimal amount;
     private final String currency;
+    private String type;
 
-    public Transaction(Date date, String description, BigDecimal amount, String currency) {
+    public Transaction(Date date, String description, BigDecimal amount, String currency, String type) {
         this.date = date;
         this.description = description;
         this.amount = amount;
         this.currency = currency;
+        this.type = type;
     }
 
     public Date getDate() {
@@ -32,5 +34,13 @@ public class Transaction {
 
     public BigDecimal getAmount() {
         return amount;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -57,6 +57,7 @@ class BalanceComponent extends Component {
       this.setState({
         doesDecreaseBalance: false
       })
+      this.getBalance();
     })
   }
 

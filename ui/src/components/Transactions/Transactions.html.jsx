@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ConvertMillisecondsToDate } from '../../utils/DateFormat';
 
 function TransactionsHtml(props) {
-  const transactionsHeaders = ['Date', 'Description', 'Amount', 'Currency'];
+  const transactionsHeaders = ['Date', 'Description', 'Amount', 'Currency', 'Type'];
   const displayTransactionsHeaders = transactionsHeaders.map(header => <th className="text-nowrap" key={header}>{header}</th>);
 
   const renderTransactionsTableData = () => {
@@ -14,13 +14,14 @@ function TransactionsHtml(props) {
       </tr>
       : (props.data.transactions.length > 0 ?
         props.data.transactions.map((info, index) => {
-          const { date, description, amount, currency } = info; //destructuring
+          const { date, description, amount, currency, type } = info; //destructuring
           return (
             <tr key={index}>
               <td>{ConvertMillisecondsToDate(date)}</td>
               <td>{description}</td>
               <td>{amount}</td>
               <td>{currency}</td>
+              <td>{type}</td>
             </tr>
           )
         })

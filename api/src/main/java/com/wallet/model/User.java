@@ -9,9 +9,9 @@ public class User {
     private final String currency;
 
     //User class constructor
-    public User(String uid, BigDecimal balance, String currency) {
+    public User(String uid, String currency) {
         this.uid = uid;
-        this.balance = balance;
+        this.balance = BigDecimal.ZERO;
         this.currency = currency;
     }
 

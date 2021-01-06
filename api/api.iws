@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0f24354-d661-40b9-87ac-714b6beb9fbf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/wallet/handler/AccountHandlerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/wallet/handler/AuthHandlerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/wallet/handler/TransactionHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api.iws" beforeDir="false" afterPath="$PROJECT_DIR$/api.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ui/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AccountHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AccountHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wallet/util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wallet/util/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wallet/handler/AccountHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/wallet/handler/AccountHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wallet/handler/AuthHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/wallet/handler/AuthHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/Balance/Balance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/components/Balance/Balance.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/Transactions/Transactions.html.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/src/components/Transactions/Transactions.html.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,5 +299,26 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wallet/handler/AccountHandler.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wallet/handler/AccountHandler.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wallet/handler/AuthHandler.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -30,7 +30,7 @@ public class AuthHandlerTest {
     public void loginReturnToken() {
 
         final String uid = UUID.randomUUID().toString();
-        final User newUser = new User(uid, new BigDecimal(100), "GBP");
+        final User newUser = new User(uid, "GBP");
 
         final String token = JwtTokenUtil.generateToken(newUser);
         final Map<String, String> res = new HashMap<>();

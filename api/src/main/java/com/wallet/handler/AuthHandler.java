@@ -3,13 +3,16 @@ package com.wallet.handler;
 import com.google.gson.Gson;
 import com.wallet.authorization.JwtTokenUtil;
 import com.wallet.exception.WalletException;
+import com.wallet.model.Transaction;
 import com.wallet.model.User;
 import com.wallet.storage.RedisPool;
+import com.wallet.util.Constants;
 import ratpack.handling.Context;
 import ratpack.handling.InjectionHandler;
 import ratpack.http.Response;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -29,12 +32,15 @@ public class AuthHandler extends InjectionHandler {
                 })
                 .post(() -> {
                     try {
-                        //Get random uid and create a User
+                        //Get random uid and create a User and a transaction for deposit
                         final String uid = UUID.randomUUID().toString();
-                        final User newUser = new User(uid, new BigDecimal(100), "GBP");
+                        final User newUser = new User(uid, "GBP");
+                        final Transaction transaction = new Transaction(new Date(), Constants.DEPOSIT, new BigDecimal(100), "GBP", Constants.DEPOSIT);
 
-                        //Save user to redis
+                        //Save user and transaction to redis
                         RedisPool.set("user#" + uid, gson.toJson(newUser));
+                        RedisPool.sadd("transactions#" + uid, gson.toJson(transaction));
+
                         //Generate token
                         final String token = JwtTokenUtil.generateToken(newUser);
 

@@ -6,8 +6,11 @@ public class Constants {
 
     //Redis
     public static final String REDIS_CANNOT_SAVE = "Cannot save data to redis with key ";
-    public static final String REDIS_CANNOT_READ = "Cannot save data to redis with key ";
+    public static final String REDIS_CANNOT_READ = "Cannot read data from redis with key ";
 
     // Wallet
+    public static final String DEPOSIT = "Deposit";
+    public static final String WITHDRAWAL = "Withdrawal";
+    public static final String INSUFFICIENT_BALANCE = "Insufficient Balance";
     public static final String SUCCESSFUL_TRANSACTION = "Transaction is completed successfully";
 }
