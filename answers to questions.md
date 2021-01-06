@@ -86,7 +86,7 @@ Blocking.get(() -> RedisPool.smembers("transactions#" + JwtTokenUtil.getUidFromT
 			ctx.render(json(transactionsList));
 		});
 ```
-Also, we are gonna have large payloads and pagination would be the solution. Finally, microservices (account api, transactions api), database as the data are increasing using Blocking.get and kubernetes is the last resource to improve the current APIs.
+Also, we are gonna have large payloads and pagination would be the solution. Finally, microservices (account api, transactions api) and kubernetes is the last resource to improve the current APIs.
 
 7.
 ```json
