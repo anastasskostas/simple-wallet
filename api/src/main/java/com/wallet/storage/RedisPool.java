@@ -1,6 +1,7 @@
 package com.wallet.storage;
 
 import com.wallet.exception.WalletException;
+import com.wallet.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ratpack.http.Status;
@@ -43,7 +44,7 @@ public class RedisPool {
             getJedis().set(key, value);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            throw new WalletException(Status.SERVICE_UNAVAILABLE, "Cannot save data to redis with key " + key, e);
+            throw new WalletException(Status.SERVICE_UNAVAILABLE, Constants.REDIS_CANNOT_SAVE + key, e);
         }
     }
 
@@ -52,7 +53,7 @@ public class RedisPool {
             return getJedis().get(key);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            throw new WalletException(Status.SERVICE_UNAVAILABLE, "Cannot read data from redis with key " + key, e);
+            throw new WalletException(Status.SERVICE_UNAVAILABLE, Constants.REDIS_CANNOT_READ + key, e);
         }
     }
 
@@ -62,7 +63,7 @@ public class RedisPool {
             getJedis().sadd(key, value);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            throw new WalletException(Status.SERVICE_UNAVAILABLE, "Cannot save data to redis with key " + key, e);
+            throw new WalletException(Status.SERVICE_UNAVAILABLE, Constants.REDIS_CANNOT_SAVE + key, e);
         }
     }
 
@@ -71,7 +72,7 @@ public class RedisPool {
             return getJedis().smembers(key);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            throw new WalletException(Status.SERVICE_UNAVAILABLE, "Cannot read data from redis with key " + key, e);
+            throw new WalletException(Status.SERVICE_UNAVAILABLE, Constants.REDIS_CANNOT_READ + key, e);
         }
     }
 

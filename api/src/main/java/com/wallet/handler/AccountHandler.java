@@ -6,6 +6,7 @@ import com.wallet.exception.WalletException;
 import com.wallet.model.Transaction;
 import com.wallet.model.User;
 import com.wallet.storage.RedisPool;
+import com.wallet.util.Constants;
 import ratpack.handling.Context;
 import ratpack.handling.InjectionHandler;
 import ratpack.http.Request;
@@ -33,7 +34,7 @@ public class AccountHandler extends InjectionHandler {
                         //Get token from headers and check if it is in valid format
                         final String bearerToken = request.getHeaders().get("Authorization");
                         if (Objects.isNull(bearerToken) || bearerToken.isEmpty() || !bearerToken.startsWith("Bearer ")) {
-                            throw new WalletException(Status.UNAUTHORIZED, "Invalid token. Please login again.");
+                            throw new WalletException(Status.UNAUTHORIZED, Constants.INVALID_TOKEN);
                         }
                         final String token = bearerToken.replace("Bearer ", "");
 
@@ -55,7 +56,7 @@ public class AccountHandler extends InjectionHandler {
                             //Get token from headers and check if it is in valid format
                             final String bearerToken = request.getHeaders().get("Authorization");
                             if (Objects.isNull(bearerToken) || bearerToken.isEmpty() || !bearerToken.startsWith("Bearer ")) {
-                                throw new WalletException(Status.UNAUTHORIZED, "Invalid token. Please login again.");
+                                throw new WalletException(Status.UNAUTHORIZED, Constants.INVALID_TOKEN);
                             }
                             final String token = bearerToken.replace("Bearer ", "");
 
@@ -76,7 +77,7 @@ public class AccountHandler extends InjectionHandler {
                             RedisPool.set("user#" + uid, gson.toJson(user));
                             RedisPool.sadd("transactions#" + uid, transaction);
 
-                            ctx.render(json("Transaction is completed successfully"));
+                            ctx.render(json(Constants.SUCCESSFUL_TRANSACTION));
                         } catch (WalletException e) {
                             response.status(e.getCode());
                             ctx.render(e.getMessage());

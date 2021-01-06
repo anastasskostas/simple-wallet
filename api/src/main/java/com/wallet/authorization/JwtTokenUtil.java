@@ -6,6 +6,7 @@ import java.util.function.Function;
 
 import com.wallet.exception.WalletException;
 import com.wallet.model.User;
+import com.wallet.util.Constants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -39,7 +40,7 @@ public class JwtTokenUtil implements Serializable {
         try {
             return Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(secret)).build().parseClaimsJws(token).getBody();
         } catch (Exception e) {
-            throw new WalletException(Status.UNAUTHORIZED, "Invalid token. Please login again.");
+            throw new WalletException(Status.UNAUTHORIZED, Constants.INVALID_TOKEN);
         }
     }
 
