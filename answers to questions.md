@@ -68,7 +68,25 @@ public void handle(Context ctx, RedisPool pool, JwtTokenUtil util, String base) 
 }
 ```
 
-Furthermore, as we are referring to production code, two important assets would be to write more log information and automation-integration tests. Also, specifically about the data (e.g. transactions), as the time passes we are gonna have large payloads and pagination would be the solution. Finally, microservices (account api, transactions api) and kubernetes is the last resource to improve the current APIs.
+Furthermore, as we are referring to production code, two important assets would be to write more log information and automation-integration tests. Also, as the time passes the data (e.g. transactions) will increase and database will be essential. Ratpack is non-blocking, so ```blocking.get()``` will be used for querying the database. 
+
+E.g. Blocking.get() with Redis
+```java
+Blocking.get(() -> RedisPool.smembers("transactions#" + JwtTokenUtil.getUidFromToken(token)))
+		.then(transactionsSet -> {
+			final List<Transaction> transactionsList = new ArrayList<>();
+			for (String transactionStr : transactionsSet) {
+				transactionsList.add(gson.fromJson(transactionStr, Transaction.class));
+			}
+
+			//Sort transactions by date
+			Collections.sort(transactionsList,
+					Comparator.comparing(Transaction::getDate, Comparator.reverseOrder()));
+
+			ctx.render(json(transactionsList));
+		});
+```
+Also, we are gonna have large payloads and pagination would be the solution. Finally, microservices (account api, transactions api), database as the data are increasing using Blocking.get and kubernetes is the last resource to improve the current APIs.
 
 7.
 ```json
