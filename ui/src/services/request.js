@@ -1,21 +1,34 @@
 import axios from 'axios';
 import { displayNotification } from '../utils/CallsInterceptor.jsx';
 
+// create a custom instance of axios
+const instance = axios.create();
 
-axios.interceptors.response.use(response => {
-  //here can global handle response
+// Add a request interceptor
+instance.interceptors.request.use(request => {
+  // Add Authorization header
+  request.headers.Authorization = getAuthorizationHeader();
+  return request;
+}, error => {
+  return Promise.reject(error);
+});
+
+// Add a response interceptor
+instance.interceptors.response.use(response => {
+  // Do something with response data
   return response;
 }, error => {
-  //here can global handle error 
+  // Any status codes that falls outside the range of 2xx cause this function to trigger
   return Promise.reject(error.response);
 })
 
 
 export function get(url) {
   return new Promise((resolve, reject) => {
-    axios.get(url, {
-      responseType: 'content-type',
-      headers: { 'Authorization': getAuthorizationHeader() }
+    instance.get(url, {
+      headers: {
+        'Accept': 'application/json'
+      }
     }).then(response => {
       resolve(response);
     }).catch(error => {
@@ -27,10 +40,10 @@ export function get(url) {
 
 export function post(url, data) {
   return new Promise((resolve, reject) => {
-    axios.post(url, data, {
+    instance.post(url, data, {
       headers: {
-        'Content-Type': `application/json`,
-        'Authorization': getAuthorizationHeader()
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       }
     }).then(response => {
       resolve(response);
